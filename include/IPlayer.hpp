@@ -13,6 +13,7 @@ namespace CardGames
     public:
         virtual ~IPlayer() {}
         virtual void displayHand() const = 0;
+        virtual void addToHand(const std::shared_ptr<Card> card) = 0;
         virtual std::string GetName() const = 0;
     };
 }

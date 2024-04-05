@@ -18,12 +18,13 @@ namespace CardGames
         virtual ~YanivPlayer();
         void addToHand(const std::shared_ptr<Card> card);
         // Method to discard one or more cards from the player's hand
-        void discardFromHand(const std::vector<int> &indices);
+        std::vector<std::shared_ptr<Card>> discardFromHand(const std::vector<size_t> &indices);
 
         void displayHand() const override;
         std::string GetName() const override;
         int GetScore() const;
         void SetScore(int newScore);
+        std::size_t GetHandSize() const;
 
     private:
         std::string m_name;
