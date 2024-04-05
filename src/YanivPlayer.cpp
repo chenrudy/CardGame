@@ -18,6 +18,7 @@ namespace CardGames
         {
             card->PrintCard();
         }
+        std::cout << std::endl;
     }
     void YanivPlayer::addToHand(const std::shared_ptr<Card> card)
     {
@@ -39,27 +40,35 @@ namespace CardGames
         m_score = newScore;
     }
 
-    std::vector<int> SortIndices(const std::vector<int> &indices) // emoving an element from the deque will change the indices of subsequent elements.
+    std::vector<size_t> SortIndices(const std::vector<size_t> &indices) // emoving an element from the deque will change the indices of subsequent elements.
     {
-        std::vector<int> sortedIndices = indices;
+        std::vector<size_t> sortedIndices = indices;
         std::sort(sortedIndices.rbegin(), sortedIndices.rend());
         return sortedIndices;
     }
 
-    void RemoveCards(const std::vector<int> &sortedIndices, std::deque<std::shared_ptr<Card>> &hand)
+    std::vector<std::shared_ptr<Card>> YanivPlayer::discardFromHand(const std::vector<size_t> &indices)
     {
+        std::vector<size_t> sortedIndices = SortIndices(indices);
+        std::vector<std::shared_ptr<Card>> discardedCards;
+
+        // Iterate over the sorted indices and extract the cards from the hand
         for (size_t index : sortedIndices)
         {
-            if (index < hand.size())
+            if (index <= m_hand.size())
             {
-                auto it = hand.begin() + index;
-                hand.erase(it);
+                auto it = m_hand.begin() + index;
+                discardedCards.push_back(*it); // Store the discarded card
+                m_hand.erase(it);
             }
         }
+
+        return discardedCards; // Return the vector of discarded cards
     }
 
-    void YanivPlayer::discardFromHand(const std::vector<int> &indices)
+    std::size_t YanivPlayer::GetHandSize() const
     {
-        RemoveCards(SortIndices(indices), m_hand);
+        return m_hand.size();
     }
+
 }

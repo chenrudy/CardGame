@@ -42,7 +42,7 @@ namespace CardGames
     {
         for (const auto &sharedCard : m_deck)
         {
-            sharedCard.get()->PrintCard();
+            sharedCard.get()->PrintCard(); // why get?
         }
         std::cout << std::endl;
     }
