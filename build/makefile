@@ -28,6 +28,7 @@ all: test
 
 test: $(OBJS)
 	$(CC) $(LD_FLAGS) $(DEBUG_FLAGS) $(VERSION) $^ $(INCLUDE_FLAG) main.cpp -o $(TARGET).out 
+	mkdir -p $(OBJ_DIR)
 	mv *.o $(OBJ_DIR)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.cpp
