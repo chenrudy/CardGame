@@ -72,8 +72,6 @@ int main()
 {
     RuntimeTest();
 
-    // std::shared_ptr<IGame> daniel = std::make_shared<GameYaniv>();
-
     return 0;
 }
 
