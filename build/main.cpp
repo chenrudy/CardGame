@@ -75,8 +75,6 @@ int main()
     return 0;
 }
 
-//    cout << "" << endl;
-
 int RuntimeTest()
 {
     shared_ptr<Deck> deckPtr = make_shared<Deck>();
