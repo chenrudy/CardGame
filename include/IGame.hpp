@@ -15,6 +15,7 @@ namespace CardGames
     class IGame
     {
     public:
+        virtual ~IGame() {}
         virtual void startGame() = 0;
         virtual void endTurn() = 0;
         virtual bool checkWinCondition() = 0;
