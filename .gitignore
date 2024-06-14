@@ -1,6 +1,9 @@
 # Ignore everything by default
 *
 
+# Unignore directories to allow further overrides
+!*/
+
 # Except source code files
 !**/*.c
 !**/*.h
